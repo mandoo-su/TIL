@@ -1,15 +1,13 @@
 import React from "react";
 import "./Game.css";
 
-class Square extends React.Component {
+function Square(props) {
     // button, 제어되는 component, Board component 가 제어중
-    render() {
-        return (
-            <button className="square" onClick={() => this.props.onClick()}>
-                {this.props.value}
-            </button>
-        );
-    }
+    return (
+        <button className="square" onClick={props.onClick}>
+            {props.value}
+        </button>
+    );
 }
 
 class Board extends React.Component {
