@@ -4,7 +4,10 @@ import "./Game.css";
 function Square(props) {
     // button, 제어되는 component, Board component 가 제어중
     return (
-        <button className="square" onClick={props.onClick}>
+        <button
+            className="square"
+            onClick={props.onClick}
+        >
             {props.value}
         </button>
     );
@@ -16,30 +19,43 @@ class Board extends React.Component {
         super(props);
         this.state = {
             squares: Array(9).fill(null),
+            xIsNest: true,
         };
     }
 
     handleClick(i) {
-        const squares = this.state.squares.slice();
-        squares[i] = "X";
-        this.setState({ squares: squares });
+        const squares =
+            this.state.squares.slice();
+        squares[i] = this.state.xIsNest
+            ? "X"
+            : "O";
+        this.setState({
+            squares: squares,
+            xIsNest: !this.state.xIsNest,
+        });
     }
 
     renderSquare(i) {
         return (
             <Square
                 value={this.state.squares[i]}
-                onClick={() => this.handleClick(i)}
+                onClick={() =>
+                    this.handleClick(i)
+                }
             />
         );
     }
 
     render() {
-        const status = "Next player: X";
+        const status =
+            "Next player:" +
+            (this.state.xIsNest ? "X" : "O");
 
         return (
             <div>
-                <div className="status">{status}</div>
+                <div className="status">
+                    {status}
+                </div>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
