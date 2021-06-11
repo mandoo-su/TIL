@@ -2,14 +2,29 @@ import React from "react";
 import "./Game.css";
 
 class Square extends React.Component {
-    //button
+    // button
+    constructor(props) {
+        // JS 클래스에서 하위 클래스의 생성자를 정의할 때 항상 super 호출 필요
+        // 모든 react component class 는 생성자를 가질 때 반드시 super(props)호출 필요
+        super(props);
+        this.state = {
+            value: null,
+        };
+    }
     render() {
-        return <button className="square">{this.props.value}</button>;
+        return (
+            <button
+                className="square"
+                onClick={() => this.setState({ value: "X" })}
+            >
+                {this.state.value}
+            </button>
+        );
     }
 }
 
 class Board extends React.Component {
-    //사각형 9개
+    // 사각형 9개
     renderSquare(i) {
         return <Square value={i} />;
     }
