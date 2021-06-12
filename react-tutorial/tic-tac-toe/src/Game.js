@@ -12,48 +12,18 @@ function Square(props) {
 
 class Board extends React.Component {
     // 사각형 9개
-    constructor(props) {
-        super(props);
-        this.state = {
-            squares: Array(9).fill(null),
-            xIsNest: true,
-        };
-    }
-
-    handleClick(i) {
-        const squares = this.state.squares.slice();
-        if (calculateWinner(squares) || squares[i]) {
-            // Winner 가 결정되었거나 squares가 이미 채워져있는 경우
-            return;
-        }
-        squares[i] = this.state.xIsNest ? "X" : "O";
-        this.setState({
-            squares: squares,
-            xIsNest: !this.state.xIsNest,
-        });
-    }
-
     renderSquare(i) {
         return (
             <Square
-                value={this.state.squares[i]}
-                onClick={() => this.handleClick(i)}
+                value={this.props.squares[i]}
+                onClick={() => this.props.onClick(i)}
             />
         );
     }
 
     render() {
-        const winner = calculateWinner(this.state.squares);
-        let status;
-        if (winner) {
-            status = "Winner" + winner;
-        } else {
-            status =
-                "Next player " + (this.state.xIsNest ? "X" : "O");
-        }
         return (
             <div>
-                <div className="status">{status}</div>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
@@ -99,15 +69,60 @@ function calculateWinner(squares) {
 }
 
 class Game extends React.Component {
-    //나중에 수정할 자리 표시자 값을 지님
+    // 수정할 자리 표시자 값을 지님
+    constructor(props) {
+        super(props);
+        this.state = {
+            history: [
+                {
+                    squares: Array(9).fill(null),
+                },
+            ],
+            xIsNest: true,
+        };
+    }
+
+    handleClick(i) {
+        const history = this.state.history;
+        const current = history[history.length - 1];
+        const squares = current.squares.slice();
+        if (calculateWinner(squares) || squares[i]) {
+            // Winner 가 결정되었거나 squares가 이미 채워져있는 경우
+            return;
+        }
+        squares[i] = this.state.xIsNest ? "X" : "O";
+        this.setState({
+            history: history.concat([
+                {
+                    squares: squares,
+                },
+            ]),
+            xIsNest: !this.state.xIsNest,
+        });
+    }
+
     render() {
+        const history = this.state.history;
+        const current = history[history.length - 1];
+        const winner = calculateWinner(current.squares);
+
+        let status;
+        if (winner) {
+            status = "Winner" + winner;
+        } else {
+            status = "Next player " + (this.state.xIsNest ? "X" : "O");
+        }
+
         return (
             <div className="game">
                 <div className="game-board">
-                    <Board />
+                    <Board
+                        squares={current.squares}
+                        onClick={(i) => this.handleClick(i)}
+                    />
                 </div>
                 <div className="game-info">
-                    <div>{/* status */}</div>
+                    <div>{status}</div>
                     <ol>{/* TODO */}</ol>
                 </div>
             </div>
