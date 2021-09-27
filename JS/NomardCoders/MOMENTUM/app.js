@@ -3,7 +3,15 @@ console.dir(title);
 
 function handleTitleClick() {
     console.log("title was Clicked.");
-    title.style.color = "blue";
+    // title.style.color = "blue";
+    const currentTitleColor = title.style.color;
+    let newTitleColor;
+    if (currentTitleColor === "blue") {
+        newTitleColor = "tomato";
+    } else {
+        newTitleColor = "blue";
+    }
+    title.style.color = newTitleColor;
 }
 
 function handleMouseEnter() {
@@ -18,25 +26,11 @@ function handleWindowResize() {
     document.body.style.backgroundColor = "tomato";
 }
 
-function handleWindowOffline() {
-    alert("kill wifi");
-}
-
-function handleWinowOnline() {
-    alert("all good");
-}
-
-function handleCopy() {
-    alert("Copier!");
-}
 //title.addEventListener("click", handleTitleClick);
 title.onclick = handleTitleClick;
 // when clicked, conduct function handleTitleClick
 title.addEventListener("mouseenter", handleMouseEnter);
 title.addEventListener("mouseleave", handleMouseLeave);
-// TODO : when clicked again, change color
+// (complete)TODO : when clicked again, change color
 
 window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy", handleCopy);
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online", handleWinowOnline);
