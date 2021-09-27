@@ -13,8 +13,30 @@ function handleMouseEnter() {
 function handleMouseLeave() {
     title.innerHTML = "Mouse is gone!";
 }
-title.addEventListener("click", handleTitleClick);
+
+function handleWindowResize() {
+    document.body.style.backgroundColor = "tomato";
+}
+
+function handleWindowOffline() {
+    alert("kill wifi");
+}
+
+function handleWinowOnline() {
+    alert("all good");
+}
+
+function handleCopy() {
+    alert("Copier!");
+}
+//title.addEventListener("click", handleTitleClick);
+title.onclick = handleTitleClick;
 // when clicked, conduct function handleTitleClick
 title.addEventListener("mouseenter", handleMouseEnter);
 title.addEventListener("mouseleave", handleMouseLeave);
 // TODO : when clicked again, change color
+
+window.addEventListener("resize", handleWindowResize);
+window.addEventListener("copy", handleCopy);
+window.addEventListener("offline", handleWindowOffline);
+window.addEventListener("online", handleWinowOnline);
