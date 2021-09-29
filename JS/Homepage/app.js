@@ -1,15 +1,5 @@
 const sections = document.querySelectorAll("section");
-// const bubble = document.querySelector(".bubble");
-// const gradients = [
-//     "linear-gradient(to right top, #acbb78, #f7f8f8)",
-//     "mintcream",
-//     "linear-gradient(to right top, #00416a, #e4e5e6)",
-//     "pink",
-//     "linear-gradient(to right top, #2c3e50, #bdc3c7)",
-// ];
 const navs = document.querySelectorAll("nav div");
-console.log(navs);
-
 const options = {
     threshold: 0.7,
 };
@@ -35,17 +25,6 @@ function navCheck(entries) {
 
         if (entry.isIntersecting) {
             activeAnchor.classList.add("active");
-            // bubble.style.setProperty(
-            //     "height",
-            //     `${directions.height}px`
-            // );
-            // bubble.style.setProperty(
-            //     "width",
-            //     `${directions.width}px`
-            // );
-            // bubble.style.setProperty("top", `${directions.top}px`);
-            // bubble.style.setProperty("left", `${directions.left}px`);
-            //bubble.style.background = gradients[gradientIndex];
         }
     });
 }

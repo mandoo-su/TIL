@@ -2,22 +2,30 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* background: maroon; */
 }
 
 body {
     font-family: sans-serif;
-    background: rgb(220, 231, 205);
+    background: white;
+    width: 100%;
+    margin: 0 auto;
 }
 
 header {
-    box-shadow: 0rem 0.3rem 2rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0rem 0.5rem 3rem rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0rem;
-    background: maroon;
+    /* background: maroon; */
+    background: linear-gradient(
+        to bottom,
+        #460418,
+        rgba(201, 10, 10, 0.801)
+    );
 }
 
 nav {
-    min-height: 10vh;
+    min-height: 15vh;
     margin: auto;
     width: 80%;
     display: flex;
@@ -26,13 +34,23 @@ nav {
 }
 
 nav h1,
-nav ul {
+nav ul,
+nav img {
     /* font-size: 1.5rem; */
     flex: 1; /* flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
     color: white;
 }
 
+nav h1 {
+    font-size: 3rem;
+}
+
+nav img {
+    display: flex;
+}
+
 nav ul {
+    font-size: 1.5rem;
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -44,35 +62,36 @@ nav li:hover {
     cursor: pointer;
 }
 
+main {
+    background: linear-gradient(
+        #ffffff,
+        #c6ffdd,
+        #fbd786,
+        #f7797d,
+        maroon
+    );
+}
+
+main img {
+    width: 100%;
+    top: 0;
+}
+
 section {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+/* 
+section:not(:first-child) {
+    margin-top: 20vh;
+} */
 
 section h2 {
-    font-size: 5rem;
-}
-
-.home {
-    background: linear-gradient(to right top, #acbb78, #f7f8f8);
-}
-
-.intro {
-    background: mintcream;
-}
-
-.projects {
-    background: linear-gradient(to right top, #00416a, #e4e5e6);
-}
-
-.recruit {
-    background: pink;
-}
-
-.contact {
-    background: linear-gradient(to right top, #2c3e50, #bdc3c7);
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0px 2px 3px black;
 }
 
 .bubble {
@@ -87,4 +106,13 @@ section h2 {
 .active {
     text-decoration: underline;
     font-weight: bold;
+}
+
+.intro {
+    flex-direction: column;
+}
+
+.intro div {
+    margin-top: 1rem;
+    text-align: center;
 }
