@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background: rgb(220, 231, 205);
+}
+
+header {
+    box-shadow: 0rem 0.3rem 2rem rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0rem;
+    background: maroon;
+}
+
+nav {
+    min-height: 10vh;
+    margin: auto;
+    width: 80%;
+    display: flex;
+    align-items: center; /* 수직축 방향 정렬 */
+    justify-content: space-between; /* 평행축 방향 정렬 */
+}
+
+nav h1,
+nav ul {
+    /* font-size: 1.5rem; */
+    flex: 1; /* flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li:hover {
+    transition: 0.5s;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section h2 {
+    font-size: 5rem;
+}
+
+.home {
+    background: linear-gradient(to right top, #acbb78, #f7f8f8);
+}
+
+.intro {
+    background: mintcream;
+}
+
+.projects {
+    background: linear-gradient(to right top, #00416a, #e4e5e6);
+}
+
+.recruit {
+    background: pink;
+}
+
+.contact {
+    background: linear-gradient(to right top, #2c3e50, #bdc3c7);
+}
+
+.bubble {
+    position: absolute;
+    z-index: -2;
+    /* background: linear-gradient(to right top, #acbb78, #f7f8f8); */
+    transform: scale(2);
+    transition: all 0.5s;
+    font-weight: bold;
+}
+
+.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
