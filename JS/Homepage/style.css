@@ -22,6 +22,7 @@ header {
         #460418,
         rgba(201, 10, 10, 0.801)
     );
+    z-index: 1000;
 }
 
 nav {
@@ -70,6 +71,7 @@ main {
         #f7797d,
         maroon
     );
+    position: relative;
 }
 
 main img {
@@ -77,16 +79,54 @@ main img {
     top: 0;
 }
 
+.scroll {
+    /* position: absolute; */
+    /* display: flex; */
+    position: relative;
+    background: #f7797d;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scroll div {
+    display: block;
+    width: 200%;
+    height: 50px;
+
+    position: absolute;
+    overflow: hidden;
+
+    animation: scroll 5s linear infinite;
+    z-index: 1000;
+    margin-top: 40px;
+}
+
+.scroll span {
+    float: left;
+    width: 10%;
+}
+
+@keyframes scroll {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: -200%;
+    }
+}
+
 section {
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
 }
-/* 
+
 section:not(:first-child) {
     margin-top: 20vh;
-} */
+}
 
 section h2 {
     font-size: 3rem;
@@ -115,4 +155,27 @@ section h2 {
 .intro div {
     margin-top: 1rem;
     text-align: center;
+}
+
+.projects div {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    margin-top: 1rem;
+}
+
+.projects ul {
+    list-style: none;
+    display: flex;
+    align-items: center; /* 수직축 방향 정렬 */
+    justify-content: space-between; /* 평행축 방향 정렬 */
+    text-align: center;
+}
+
+.projects li {
+    display: inline-block;
+}
+
+.projects img {
+    width: 50%;
 }
