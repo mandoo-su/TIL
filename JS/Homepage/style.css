@@ -117,7 +117,6 @@ main img {
 }
 
 section {
-    /* height: 100vh; */
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -125,7 +124,7 @@ section {
 }
 
 section:not(:first-child) {
-    margin-top: 20vh;
+    height: 100vh;
 }
 
 section h2 {
